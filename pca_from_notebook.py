@@ -21,6 +21,15 @@ y = dataset.iloc[:, 13].values
 # Splitting the X and Y into the Training set and Testing set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
+# Visualize the data before performing analysis
+plt.title('Unmodified data')
+colors = ["r", "g", "b"]
+labels = ["Class 1", "Class 2", "Class 3"]
+for i, color, label in zip(np.unique(y), colors, labels):
+    plt.scatter(X_train[y_train == i, 0], X_train[y_train == i, 1], color=color, label=label)
+plt.legend()
+plt.show()
+
 # performing preprocessing part
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
